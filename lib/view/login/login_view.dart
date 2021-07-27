@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:login_ui/core/components/input/login_input.dart';
 import 'package:login_ui/core/extensions/num_extensions.dart';
 import 'package:login_ui/view/login/login_viewmodel.dart';
-import 'package:login_ui/view/signup/signup_view.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -11,45 +10,31 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final LoginViewModel loginViewModel = LoginViewModel();
+  final loginViewModel = LoginViewModel();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-            alignment: Alignment.center,
-            child: Column(
-              children: [
-                Hero(
-                  tag: 'hero',
-                  child: Observer(
-                    builder: (_) {
-                    return AnimatedContainer(
-                      duration: 5.secondDuration,
-                      width: 250,
-                      height: 250,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: 0.radius50,
-                      ),
-                      child: Wrap(
-                        children: loginViewModel.widgetList,
-                      ),
-                    );
-                  }),
+        child: Column(
+          children: [
+            Observer(builder: (_) {
+              return AnimatedSwitcher(
+                duration: 1.secondDuration,
+                transitionBuilder: (i, a) => SizeTransition(
+                  sizeFactor: a,
+                  child: i,
                 ),
-                TextButton(
-                    onPressed: () {
-                      loginViewModel.addItem(LoginInput(
-                        hint: 'asdasdasd',  
-                      ));
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (_) => SignupView()));
-                    },
-                    child: Text('sdasdasd'))
-              ],
-            )),
+                child: loginViewModel.i ? buildFirst : buildSecond,
+              );
+            }),
+            TextButton(
+                onPressed: () {
+                  loginViewModel.set();
+                },
+                child: Text('sdasdasd'))
+          ],
+        ),
       ),
     );
   }
@@ -66,21 +51,23 @@ class _LoginViewState extends State<LoginView> {
         ],
       );
 
-  Column get buildSecond => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          LoginInput(
-            hint: 'asdasdasd',
-          ),
-          LoginInput(
-            hint: 'asdasdasd',
-          ),
-          LoginInput(
-            hint: 'asdasdasd',
-          ),
-          LoginInput(
-            hint: 'asdasdasd',
-          ),
-        ],
+  Widget get buildSecond => Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            LoginInput(
+              hint: 'asdasdasd',
+            ),
+            LoginInput(
+              hint: 'asdasdasd',
+            ),
+            LoginInput(
+              hint: 'asdasdasd',
+            ),
+            LoginInput(
+              hint: 'asdasdasd',
+            ),
+          ],
+        ),
       );
 }
