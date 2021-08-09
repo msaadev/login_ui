@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 class AppConstants {
-  static const BACKGROUND_COLOR = Color(0xffFFFFFF);
-  static const LOGIN_END = Color(0xFF4084ff);
+  
+  static const Color BACKGROUND_COLOR = Color(0xffFFFFFF);
+  static const Color LOGIN_END = Color(0xFF4084ff);
   static const LOGIN_START = Color(0xFF4650fe);
   static const BUTTON = Color(0xff4469ff);
 

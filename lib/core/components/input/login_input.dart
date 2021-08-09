@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lib_msaadev/lib_msaadev.dart';
-import 'package:login_ui/core/constants/app_constats.dart';
 
 class LoginInput extends StatelessWidget {
   final String? hint;

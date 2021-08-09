@@ -7,6 +7,7 @@ import 'package:login_ui/view/forgot_password/forgot_password_view.dart';
 import 'package:login_ui/view/login/login_view.dart';
 import 'package:login_ui/view/signup/signup_view.dart';
 
+
 class AuthView extends StatefulWidget {
   @override
   _AuthViewState createState() => _AuthViewState();
@@ -38,7 +39,7 @@ class _AuthViewState extends State<AuthView> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [AppConstants.LOGIN_START, AppConstants.LOGIN_END],
+            colors: const [ AppConstants.LOGIN_START, AppConstants.LOGIN_END],
           ),
         ),
         child: Column(
