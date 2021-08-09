@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lib_msaadev/lib_msaadev.dart';
 import 'package:login_ui/core/constants/app_constats.dart';
-import 'package:login_ui/core/extensions/context_extensions.dart';
-import 'package:login_ui/core/extensions/num_extensions.dart';
 
 class LoginInput extends StatelessWidget {
   final String? hint;
@@ -34,18 +33,18 @@ class LoginInput extends StatelessWidget {
         obscureText: obscure,
         controller: controller,
         style: context.textTheme.bodyText1!.copyWith(
-          color: AppConstants.PRIMARY_COLOR,
+          // color: AppConstants.PRIMARY_COLOR,
         ),
         decoration: InputDecoration(
           errorStyle: context.textTheme.bodyText1!
               .copyWith(color: Colors.grey, fontSize: 10),
           prefixIcon: Icon(
             icon ?? Icons.verified_user,
-            color: AppConstants.PRIMARY_COLOR,
+            // color: AppConstants.PRIMARY_COLOR,
           ),
           hintText: hint,
           hintStyle: context.textTheme.bodyText1!.copyWith(
-            color: AppConstants.DOVE_GRAY,
+            // color: AppConstants.DOVE_GRAY,
           ),
           filled: true,
           fillColor: Colors.white,
@@ -61,5 +60,7 @@ class LoginInput extends StatelessWidget {
   }
   OutlineInputBorder get buildBorder => OutlineInputBorder(
       borderRadius: 0.radius10,
-      borderSide: BorderSide(color: AppConstants.PRIMARY_COLOR, width: 1));
+      borderSide: BorderSide(
+        // color: AppConstants.PRIMARY_COLOR, 
+        width: 1));
 }
