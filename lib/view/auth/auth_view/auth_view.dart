@@ -50,16 +50,6 @@ class _AuthViewState extends State<AuthView> {
               height: context.customHeight(3),
               child: Observer(builder: (_) {
                 return headerSwitch(_viewModel.page);
-                // AnimatedSwitcher(
-                //   duration: 500.millisecondsDuration,
-                //   transitionBuilder: (child, anim) {
-                //     return SizeTransition(
-                //       sizeFactor: anim,
-                //       child: child,
-                //     );
-                //   },
-                //   child: headerSwitch(_viewModel.page),
-                // );
               }),
             ),
             Expanded(
@@ -82,11 +72,11 @@ class _AuthViewState extends State<AuthView> {
       case 0:
         return headerText('Reset Password');
       case 1:
-        return SizedBox(child: headerText('Login'));
+        return headerText('Login');
       case 2:
-        return Container(child: headerText('Signup'));
+        return headerText('Signup');
       default:
-        return Container(child: headerText('Login'));
+        return headerText('Login');
     }
   }
 
@@ -95,17 +85,12 @@ class _AuthViewState extends State<AuthView> {
       style: context.textTheme.headline2!
           .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
       child: AnimatedTextKit(
-          isRepeatingAnimation: false,
-          repeatForever: false,
-          animatedTexts: [
-            TypewriterAnimatedText(text,
-                speed: 100.millisecondsDuration, cursor: ''),
-          ]),
+        isRepeatingAnimation: false,
+        repeatForever: true,
+         animatedTexts: [
+        TypewriterAnimatedText(text,
+            speed: 100.millisecondsDuration, cursor: ''),
+      ]),
     );
-    // Text(
-    //   text,
-    //   style: context.textTheme.headline2!
-    //       .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-    // );
   }
 }
