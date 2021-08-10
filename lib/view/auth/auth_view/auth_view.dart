@@ -1,12 +1,12 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lib_msaadev/lib_msaadev.dart';
 import 'package:login_ui/core/constants/app_constats.dart';
-import 'package:login_ui/view/auth/auth_viewmodel.dart';
-import 'package:login_ui/view/forgot_password/forgot_password_view.dart';
-import 'package:login_ui/view/login/login_view.dart';
-import 'package:login_ui/view/signup/signup_view.dart';
-
+import 'package:login_ui/view/auth/auth_view/auth_viewmodel.dart';
+import 'package:login_ui/view/auth/forgot_password/forgot_password_view.dart';
+import 'package:login_ui/view/auth/login/login_view.dart';
+import 'package:login_ui/view/auth/signup/signup_view.dart';
 
 class AuthView extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _AuthViewState extends State<AuthView> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: const [ AppConstants.LOGIN_START, AppConstants.LOGIN_END],
+            colors: const [AppConstants.LOGIN_START, AppConstants.LOGIN_END],
           ),
         ),
         child: Column(
@@ -49,16 +49,17 @@ class _AuthViewState extends State<AuthView> {
               padding: 10.paddingAll,
               height: context.customHeight(3),
               child: Observer(builder: (_) {
-                return AnimatedSwitcher(
-                  duration: 500.millisecondsDuration,
-                  transitionBuilder: (child, anim) {
-                    return SizeTransition(
-                      sizeFactor: anim,
-                      child: child,
-                    );
-                  },
-                  child: headerSwitch(_viewModel.page),
-                );
+                return headerSwitch(_viewModel.page);
+                // AnimatedSwitcher(
+                //   duration: 500.millisecondsDuration,
+                //   transitionBuilder: (child, anim) {
+                //     return SizeTransition(
+                //       sizeFactor: anim,
+                //       child: child,
+                //     );
+                //   },
+                //   child: headerSwitch(_viewModel.page),
+                // );
               }),
             ),
             Expanded(
@@ -89,11 +90,22 @@ class _AuthViewState extends State<AuthView> {
     }
   }
 
-  Text headerText(String text) {
-    return Text(
-      text,
+  Widget headerText(String text) {
+    return DefaultTextStyle(
       style: context.textTheme.headline2!
           .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+      child: AnimatedTextKit(
+          isRepeatingAnimation: false,
+          repeatForever: false,
+          animatedTexts: [
+            TypewriterAnimatedText(text,
+                speed: 100.millisecondsDuration, cursor: ''),
+          ]),
     );
+    // Text(
+    //   text,
+    //   style: context.textTheme.headline2!
+    //       .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+    // );
   }
 }
