@@ -4,6 +4,9 @@ import 'package:login_ui/core/components/hero/my_hero.dart';
 import 'package:login_ui/view/profile/profile_view.dart';
 
 class LoginView extends StatelessWidget {
+  final PageController pageController;
+
+  const LoginView({Key? key,required this.pageController}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MyHero(

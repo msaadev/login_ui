@@ -58,7 +58,13 @@ class _AuthViewState extends State<AuthView> {
                 onPageChanged: (page) {
                   _viewModel.setPage(page);
                 },
-                children: [ForgotPasswordView(), LoginView(), SignupView()],
+                children: [
+                  ForgotPasswordView(
+                    pageController: _pageController,
+                  ),
+                  LoginView(pageController: _pageController),
+                  SignupView(pageController: _pageController)
+                ],
               ),
             )
           ],
@@ -85,12 +91,12 @@ class _AuthViewState extends State<AuthView> {
       style: context.textTheme.headline2!
           .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
       child: AnimatedTextKit(
-        isRepeatingAnimation: false,
-        repeatForever: true,
-         animatedTexts: [
-        TypewriterAnimatedText(text,
-            speed: 100.millisecondsDuration, cursor: ''),
-      ]),
+          isRepeatingAnimation: false,
+          repeatForever: true,
+          animatedTexts: [
+            TypewriterAnimatedText(text,
+                speed: 100.millisecondsDuration, cursor: ''),
+          ]),
     );
   }
 }

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lib_msaadev/lib_msaadev.dart';
 
 class ForgotPasswordView extends StatelessWidget {
+
+  final PageController pageController;
+
+  const ForgotPasswordView({Key? key,required this.pageController}) : super(key: key);
 @override
 Widget build(BuildContext context) {
  return Container(
