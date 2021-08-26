@@ -49,7 +49,13 @@ class _AuthViewState extends State<AuthView> {
               padding: 10.paddingAll,
               height: context.customHeight(3),
               child: Observer(builder: (_) {
-                return headerSwitch(_viewModel.page);
+                return AnimatedSwitcher(
+                    duration: 200.millisecondsDuration,
+                    transitionBuilder: (c, a) => SizeTransition(
+                          sizeFactor: a,
+                          child: c,
+                        ),
+                    child: headerSwitch(_viewModel.page));
               }),
             ),
             Expanded(
@@ -78,25 +84,23 @@ class _AuthViewState extends State<AuthView> {
       case 0:
         return headerText('Reset Password');
       case 1:
-        return headerText('Login');
+        return SizedBox(child: headerText('Login'));
       case 2:
-        return headerText('Signup');
+        return Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: headerText('Signup'),
+        );
       default:
         return headerText('Login');
     }
   }
 
   Widget headerText(String text) {
-    return DefaultTextStyle(
+    return Text(
+      text,
       style: context.textTheme.headline2!
           .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-      child: AnimatedTextKit(
-          isRepeatingAnimation: false,
-          repeatForever: true,
-          animatedTexts: [
-            TypewriterAnimatedText(text,
-                speed: 100.millisecondsDuration, cursor: ''),
-          ]),
+      textAlign: TextAlign.left,
     );
   }
 }
