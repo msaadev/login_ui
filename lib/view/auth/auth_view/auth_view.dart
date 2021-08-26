@@ -42,7 +42,7 @@ class _AuthViewState extends State<AuthView> {
             colors: const [AppConstants.LOGIN_START, AppConstants.LOGIN_END],
           ),
         ),
-        child: Column(
+        child: ListView(
           children: [
             Container(
               alignment: Alignment.centerLeft,
@@ -58,7 +58,8 @@ class _AuthViewState extends State<AuthView> {
                     child: headerSwitch(_viewModel.page));
               }),
             ),
-            Expanded(
+            SizedBox(
+              height: context.customHeight(1.5) - 30,
               child: PageView(
                 controller: _pageController,
                 onPageChanged: (page) {

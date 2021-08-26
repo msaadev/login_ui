@@ -22,17 +22,35 @@ class LoginView extends StatelessWidget {
             borderRadius: 0.radius10,
           ),
           alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  LoginInput(),
-                  LoginInput(),
-                ],
-              ),
-              CustomButton()
-            ],
+          child: Form(
+            autovalidateMode: AutovalidateMode.always,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    LoginInput(
+                      icon: Icons.mail,
+                      hint: 'e-mail',
+                      validator: (String? value) {
+                        if (value != null) {
+                          if (value.isValidEmail) {
+                            return null;
+                          }
+                        }
+                        return 'invalid email';
+                      },
+                    ),
+                    LoginInput(
+                      icon: Icons.vpn_key,
+                      obscure: true,
+                      hint: 'password',
+                    ),
+                  ],
+                ),
+                CustomButton(),
+              ],
+            ),
           )),
     );
   }
