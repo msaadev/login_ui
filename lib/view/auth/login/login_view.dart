@@ -23,7 +23,7 @@ class LoginView extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: Form(
-            autovalidateMode: AutovalidateMode.always,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -48,7 +48,7 @@ class LoginView extends StatelessWidget {
                     ),
                   ],
                 ),
-                CustomButton(),
+                CustomButton(text: 'Login',),
               ],
             ),
           )),

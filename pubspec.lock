@@ -15,13 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.1"
-  animated_text_kit:
-    dependency: "direct main"
-    description:
-      name: animated_text_kit
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.2.1"
   args:
     dependency: transitive
     description:
@@ -294,7 +287,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: f65ff147c8f3b4cc42ec05e39915143a489df463
+      resolved-ref: d599d0ff1ca54f76fda3deb861dc222bdf31a58b
       url: "https://github.com/msaadev/lib_msaadev"
     source: git
     version: "0.0.1"
@@ -533,14 +526,14 @@ packages:
       name: url_launcher_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.4"
   url_launcher_windows:
     dependency: transitive
     description:
       name: url_launcher_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   vector_math:
     dependency: transitive
     description:
