@@ -24,7 +24,7 @@ class LoginInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: 5.paddingSymmetricVertical,
       child: TextFormField(
         validator: validator,
         onEditingComplete:

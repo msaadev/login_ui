@@ -46,9 +46,16 @@ class LoginView extends StatelessWidget {
                       obscure: true,
                       hint: 'password',
                     ),
+                    10.hSized,
+                    Text('Forgot Password').onTap(() =>
+                        pageController.previousPage(
+                            duration: 250.millisecondsDuration,
+                            curve: Curves.ease))
                   ],
                 ),
-                CustomButton(text: 'Login',),
+                CustomButton(
+                  text: 'Login',
+                ),
               ],
             ),
           )),

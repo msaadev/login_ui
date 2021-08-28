@@ -46,7 +46,7 @@ class _AuthViewState extends State<AuthView> {
             Container(
               alignment: Alignment.centerLeft,
               padding: 10.paddingAll,
-              height: context.customHeight(3),
+              height: context.customHeight(4),
               child: Observer(builder: (_) {
                 return AnimatedSwitcher(
                     duration: 200.millisecondsDuration,
@@ -58,7 +58,7 @@ class _AuthViewState extends State<AuthView> {
               }),
             ),
             SizedBox(
-              height: context.customHeight(1.5) - 30,
+              height: context.customHeight(1.35) - 30,
               child: PageView(
                 controller: _pageController,
                 onPageChanged: (page) {
