@@ -66,7 +66,7 @@ class _AuthViewState extends State<AuthView> {
                   _viewModel.setPage(page);
                 },
                 children: [
-                  ForgotPasswordView(
+                  ForgetPasswordView(
                     pageController: _pageController,
                   ),
                   LoginView(pageController: _pageController),

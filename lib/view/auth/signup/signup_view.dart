@@ -39,14 +39,14 @@ class _SignupViewState extends State<SignupView> {
   Widget build(BuildContext context) {
     return Container(
       margin: 10.paddingAll,
-      padding: 10.paddingAll,
+      padding: 20.paddingAll,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: 0.radius10,
       ),
       alignment: Alignment.center,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Form(
             key: _key,
@@ -96,22 +96,20 @@ class _SignupViewState extends State<SignupView> {
           ),
           CustomButton(
             text: 'Signup',
-            onTap: () {
-              if (_key.currentState!.validate()) {
-                print('valid');
-              } else {
-                print('not valid');
-              }
-            },
+            onTap: () => signup,
           ),
+          Text('Login')
         ],
       ),
     );
   }
 
-void get signup {
-  
-}
-
-
+  void get signup {
+    if (_key.currentState!.validate()) {
+      widget.pageController
+          .previousPage(duration: 250.millisecondsDuration, curve: Curves.ease);
+    } else {
+      print('not valid');
+    }
+  }
 }

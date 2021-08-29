@@ -6,7 +6,8 @@ class CustomButton extends StatelessWidget {
   final String text;
   final Function()? onTap;
 
-  const CustomButton({Key? key,required this.text, this.onTap}) : super(key: key);
+  const CustomButton({Key? key, required this.text, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class CustomButton extends StatelessWidget {
       padding: 15.paddingAll,
       decoration: BoxDecoration(
         color: AppConstants.BUTTON,
-        borderRadius: 0.radius10,
+        borderRadius: 0.radius5,
       ),
       child: Text(
         text,
