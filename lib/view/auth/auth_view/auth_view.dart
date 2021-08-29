@@ -42,6 +42,7 @@ class _AuthViewState extends State<AuthView> {
           ),
         ),
         child: ListView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           children: [
             Container(
               alignment: Alignment.centerLeft,

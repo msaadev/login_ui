@@ -4,26 +4,50 @@ import 'package:login_ui/core/components/buttons/custom_button.dart';
 import 'package:login_ui/core/components/hero/my_hero.dart';
 import 'package:login_ui/core/components/input/login_input.dart';
 import 'package:login_ui/core/constants/app_constats.dart';
-import 'package:login_ui/view/profile/profile_view.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   final PageController pageController;
 
   const LoginView({Key? key, required this.pageController}) : super(key: key);
+
+  @override
+  _LoginViewState createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  late final GlobalKey<FormState> _key;
+  late final TextEditingController _mail, _password;
+
+  @override
+  void initState() {
+    super.initState();
+    _key = GlobalKey<FormState>();
+    _mail = TextEditingController();
+    _password = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    if (_key.currentState != null) _key.currentState!.dispose();
+    _mail.dispose();
+    _password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MyHero(
       tag: 'login',
       child: Container(
           margin: 10.paddingAll,
-          padding: 10.paddingAll,
+          padding: 20.paddingAll,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: 0.radius10,
           ),
           alignment: Alignment.center,
           child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            key: _key,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -41,21 +65,44 @@ class LoginView extends StatelessWidget {
                         return 'invalid email';
                       },
                     ),
+                    10.hSized,
                     LoginInput(
                       icon: Icons.vpn_key,
                       obscure: true,
                       hint: 'password',
                     ),
                     10.hSized,
-                    Text('Forgot Password').onTap(() =>
-                        pageController.previousPage(
-                            duration: 250.millisecondsDuration,
-                            curve: Curves.ease))
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Forget Password',
+                        style: context.textTheme.bodyText1!
+                            .copyWith(color: AppConstants.BUTTON),
+                      ).onTap(() => widget.pageController.previousPage(
+                          duration: 250.millisecondsDuration,
+                          curve: Curves.ease)),
+                    )
                   ],
                 ),
                 CustomButton(
                   text: 'Login',
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't Have An Account? ",
+                      style: context.textTheme.bodyText1!
+                          .copyWith(color: Colors.grey.shade600),
+                    ),
+                    Text(
+                      'Register Now',
+                      style: context.textTheme.bodyText1!
+                          .copyWith(color: AppConstants.BUTTON),
+                    ).onTap(() => widget.pageController.nextPage(
+                        duration: 250.millisecondsDuration, curve: Curves.ease))
+                  ],
+                )
               ],
             ),
           )),

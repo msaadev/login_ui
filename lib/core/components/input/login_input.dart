@@ -31,21 +31,19 @@ class LoginInput extends StatelessWidget {
             onEditingComplete ?? () => FocusScope.of(context).nextFocus(),
         obscureText: obscure,
         controller: controller,
-        style: context.textTheme.bodyText1!.copyWith(
-            // color: AppConstants.PRIMARY_COLOR,
-            ),
         decoration: InputDecoration(
           errorStyle: context.textTheme.bodyText1!
               .copyWith(color: Colors.grey, fontSize: 10),
           prefixIcon: Icon(
             icon ?? Icons.mail,
+            color: Color(0xff7c807f),
           ),
           hintText: hint,
           hintStyle: context.textTheme.bodyText1!.copyWith(
-            color: Colors.grey.shade500,
+            color: Color(0xff7c807f),
           ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: Color(0xffe7edeb),
           enabledBorder: buildBorder,
           border: buildBorder,
           errorBorder: buildBorder,
@@ -58,8 +56,9 @@ class LoginInput extends StatelessWidget {
   }
 
   OutlineInputBorder get buildBorder => OutlineInputBorder(
-      borderRadius: 0.radius10,
+      borderRadius: 0.radius5,
       borderSide: BorderSide(
           // color: AppConstants.PRIMARY_COLOR,
-          width: 1));
+          color: Colors.transparent,
+          width: 0));
 }
