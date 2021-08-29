@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lib_msaadev/lib_msaadev.dart';
 import 'package:login_ui/core/components/buttons/custom_button.dart';
+import 'package:login_ui/core/components/buttons/login_button.dart';
 import 'package:login_ui/core/components/input/login_input.dart';
 import 'package:login_ui/core/constants/app_constats.dart';
 
@@ -98,7 +99,10 @@ class _SignupViewState extends State<SignupView> {
             text: 'Signup',
             onTap: () => signup,
           ),
-          Text('Login')
+          LoginButton(
+            pageController: widget.pageController,
+            isNext: false,
+          )
         ],
       ),
     );
@@ -106,10 +110,11 @@ class _SignupViewState extends State<SignupView> {
 
   void get signup {
     if (_key.currentState!.validate()) {
+      AppConstants.showSuccesToas(message: 'Successfully registered');
       widget.pageController
           .previousPage(duration: 250.millisecondsDuration, curve: Curves.ease);
     } else {
-      print('not valid');
+      AppConstants.showErrorToas(message: 'Please fill in the required fields');
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_msaadev/lib_msaadev.dart';
 import 'package:login_ui/core/components/buttons/custom_button.dart';
@@ -113,7 +112,7 @@ class _LoginViewState extends State<LoginView> {
     if (_key.currentState!.validate()) {
       AppConstants.showSuccesToas(message: 'Logged In');
     } else {
-      AppConstants.showErrorToas(message: 'Please fill required fields');
+      AppConstants.showErrorToas(message: 'Please fill in the required fields');
     }
   }
 }

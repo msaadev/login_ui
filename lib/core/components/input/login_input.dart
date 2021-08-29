@@ -33,7 +33,7 @@ class LoginInput extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           errorStyle: context.textTheme.bodyText1!
-              .copyWith(color: Colors.grey, fontSize: 10),
+              .copyWith(color: Colors.red.shade200, fontSize: 10),
           prefixIcon: Icon(
             icon ?? Icons.mail,
             color: Color(0xff7c807f),
